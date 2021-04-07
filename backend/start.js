@@ -6,6 +6,8 @@ const createError = require('http-errors');
 const {routes} = require('./Controller');
 const {ServerError} = require('./Entity/ServerError');
 
+const {query} = require('./Repository');
+
 const app = express();
 
 app.use(helmet());

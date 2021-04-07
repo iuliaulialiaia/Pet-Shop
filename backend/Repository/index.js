@@ -1,6 +1,6 @@
 const {Pool} = require('pg');
 
-const options = {
+const config = {
   host: process.env.DB_HOST,
   database: process.env.DB_DB,
   port: process.env.DB_PORT,
@@ -8,7 +8,7 @@ const options = {
   password: process.env.DB_PASSWORD
 };
 
-const pool = new Pool(options);
+const pool = new Pool(config);
 
 async function query(text, params) {
   const start = Date.now();
