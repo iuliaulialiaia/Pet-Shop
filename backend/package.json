@@ -1,0 +1,11 @@
+{
+  "name": "pet-shop",
+  "version": "1.0.0",
+  "description": "The backend of an online Pet Shop",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "author": "Iulia-Maria Tomulescu",
+  "license": "ISC"
+}
