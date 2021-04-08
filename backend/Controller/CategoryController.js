@@ -1,5 +1,5 @@
 const express = require('express');
-const {Category} = require('../Entity/Category');
+const {validateFields} = require('../Entity/Validator');
 const CategoryRepository = require('../Repository/CategoryRepository');
 
 const router = express.Router();
@@ -18,8 +18,12 @@ router.get('/',
 router.get('/:id',
   async (req, res, next) => {
     try {
-      const categoryEntity = new Category(process.env.READ, req.body, req.params);
-      const id = categoryEntity.getId;
+      const {id} = req.params;
+      const fields = [
+        {type: 'int', value: id}
+      ];
+      validateFields(fields);
+
       const category = await CategoryRepository.getById(id);
       res.json(category);
     } catch (err) {
@@ -31,9 +35,13 @@ router.get('/:id',
 router.post('/',
   async (req, res, next) => {
     try {
-      const categoryEntity = new Category(process.env.CREATE, req.body, req.params);
-      const name = categoryEntity.getName;
-      const target = categoryEntity.getTarget;
+      const {name, target} = req.body;
+      const fields = [
+        {type: 'categoryName', value: name},
+        {type: 'categoryTarget', value: target}
+      ];
+      validateFields(fields);
+
       await CategoryRepository.add(name, target);
       res.status(201).end();
     } catch (err) {
@@ -45,10 +53,15 @@ router.post('/',
 router.put('/:id',
   async (req, res, next) => {
     try {
-      const categoryEntity = new Category(process.env.UPDATE, req.body, req.params);
-      const id = categoryEntity.getId;
-      const name = categoryEntity.getName;
-      const target = categoryEntity.getTarget;
+      const {id} = req.params;
+      const {name, target} = req.body;
+      const fields = [
+        {type: 'int', value: id},
+        {type: 'categoryName', value: name},
+        {type: 'categoryTarget', value: target}
+      ];
+      validateFields(fields);
+
       await CategoryRepository.updateById(id, name, target);
       res.status(200).end();
     } catch (err) {
@@ -60,8 +73,12 @@ router.put('/:id',
 router.delete('/:id',
   async (req, res, next) => {
     try {
-      const categoryEntity = new Category(process.env.DELETE, req.body, req.params);
-      const id = categoryEntity.getId;
+      const {id} = req.params;
+      const fields = [
+        {type: 'int', value: id}
+      ];
+      validateFields(fields);
+
       await CategoryRepository.deleteById(id);
       res.status(200).end();
     } catch (err) {

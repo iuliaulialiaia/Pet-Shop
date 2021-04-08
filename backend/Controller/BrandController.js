@@ -1,5 +1,5 @@
 const express = require('express');
-const {Brand} = require('../Entity/Brand');
+const {validateFields} = require('../Entity/Validator');
 const BrandRepository = require('../Repository/BrandRepository');
 
 const router = express.Router();
@@ -18,8 +18,12 @@ router.get('/',
 router.get('/:id',
   async (req, res, next) => {
     try {
-      const brandEntity = new Brand(process.env.READ, req.body, req.params);
-      const id = brandEntity.getId;
+      const {id} = req.params;
+      const fields = [
+        {type: 'int', value: id}
+      ];
+      validateFields(fields);
+
       const brand = await BrandRepository.getById(id);
       res.json(brand);
     } catch (err) {
@@ -31,8 +35,12 @@ router.get('/:id',
 router.post('/',
   async (req, res, next) => {
     try {
-      const brandEntity = new Brand(process.env.CREATE, req.body, req.params);
-      const name = brandEntity.getName;
+      const {name} = req.body;
+      const fields = [
+        {type: 'alphanumeric', value: name}
+      ];
+      validateFields(fields);
+
       await BrandRepository.add(name);
       res.status(201).end();
     } catch (err) {
@@ -44,9 +52,14 @@ router.post('/',
 router.put('/:id',
   async (req, res, next) => {
     try {
-      const brandEntity = new Brand(process.env.UPDATE, req.body, req.params);
-      const id = brandEntity.getId;
-      const name = brandEntity.getName;
+      const {id} = req.params;
+      const {name} = req.body;
+      const fields = [
+        {type: 'int', value: id},
+        {type: 'alphanumeric', value: name}
+      ];
+      validateFields(fields);
+
       await BrandRepository.updateById(id, name);
       res.status(200).end();
     } catch (err) {
@@ -58,8 +71,12 @@ router.put('/:id',
 router.delete('/:id',
   async (req, res, next) => {
     try {
-      const brandEntity = new Brand(process.env.DELETE, req.body, req.params);
-      const id = brandEntity.getId;
+      const {id} = req.params;
+      const fields = [
+        {type: 'int', value: id}
+      ];
+      validateFields(fields);
+
       await BrandRepository.deleteById(id);
       res.status(200).end();
     } catch (err) {
