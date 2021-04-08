@@ -22,15 +22,16 @@ function validateFields(fields) {
     }
 
     let options;
-    switch(fieldType) {
+    switch (fieldType) {
       case 'ascii':
         if(!validator.isAscii(fieldValue)) {
           throw new ServerError(`The field ${fieldValue} is not ascii.`, user_error);
         }
         break;
-      case 'name':
-        if(!validator.matches(fieldValue, /[a-zA-Z][a-zA-Z0-9.\-_]+[a-zA-Z0-9]/g)) {
-          throw new ServerError(`The field ${fieldValue} is not alphanumeric.`, user_error);
+      case 'float':
+        options = {min: 0.1};
+        if(!validator.isFloat(fieldValue, options)) {
+          throw new ServerError(`The field ${fieldValue} is not floating point.`, user_error);
         }
         break;
       case 'int+':
@@ -39,10 +40,15 @@ function validateFields(fields) {
           throw new ServerError(`The field ${fieldValue} is not a positive integer.`, user_error);
         }
         break;
-      case 'float':
-        options = {min: 0.1};
-        if(!validator.isFloat(fieldValue, options)) {
-          throw new ServerError(`The field ${fieldValue} is not floating point.`, user_error);
+      case 'rating':
+        options = {min: 1, max: 5};
+        if (!validator.isInt(fieldValue, options)) {
+          throw new ServerError(`The field ${fieldValue} is not a rating.`, user_error);
+        }
+        break;
+      case 'name':
+        if(!validator.matches(fieldValue, /[a-zA-Z][a-zA-Z0-9.\-_]+[a-zA-Z0-9]/g)) {
+          throw new ServerError(`The field ${fieldValue} is not alphanumeric.`, user_error);
         }
         break;
       case 'categoryName':
@@ -53,12 +59,6 @@ function validateFields(fields) {
       case 'categoryTarget':
         if (!categoryTargets.includes(fieldValue.toLowerCase())) {
           throw new ServerError(`The field ${fieldValue} is not a category target.`, user_error);
-        }
-        break;
-      case 'rating':
-        options = {min: 1, max: 5};
-        if (!validator.isInt(fieldValue, options)) {
-          throw new ServerError(`The field ${fieldValue} is not a rating.`, user_error);
         }
         break;
       default:

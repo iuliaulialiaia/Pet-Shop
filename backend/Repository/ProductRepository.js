@@ -1,12 +1,27 @@
 const {query} = require('.');
 
 async function getAll() {
-  const sql_query = 'SELECT * FROM product';
+  const sql_query = ' \
+    SELECT b.id as brand_id, b.name as brand_name, \
+      c.name as category_name, c.target, \
+      p.id as product_id, p.name as product_name, p.price, p.quantity, p.description, p.comments, p.rating \
+    FROM brand b, category c, product p \
+    WHERE p.brand_id = b.id \
+    AND p.category_id = c.id \
+  ';
   return await query(sql_query);
 }
 
 async function getById(id) {
-  const sql_query = 'SELECT * FROM product WHERE id = $1';
+  const sql_query = ' \
+    SELECT b.id as brand_id, b.name as brand_name, \
+      c.name as category_name, c.target, \
+      p.id as product_id, p.name as product_name, p.price, p.quantity, p.description, p.comments, p.rating \
+    FROM brand b, category c, product p \
+    WHERE p.brand_id = b.id \
+    AND p.category_id = c.id \
+    AND p.id = $1 \
+  ';
   return await query(sql_query, [id]);
 }
 
@@ -22,13 +37,13 @@ async function add(name, price, quantity, description, comments, rating, brand_i
 async function updateById(id, name, price, quantity, description, comments, rating, brand_id, category_id) {
   const sql_query = 'UPDATE product \
     SET name = $1, \
-    price = $2, \
-    quantity = $3, \
-    description = $4, \
-    comments = $5, \
-    rating = $6, \
-    brand_id = $7, \
-    category_id = $8 \
+      price = $2, \
+      quantity = $3, \
+      description = $4, \
+      comments = $5, \
+      rating = $6, \
+      brand_id = $7, \
+      category_id = $8 \
     WHERE id = $9 \
   ';
   await query(sql_query, [name, price, quantity, description, comments, rating, brand_id, category_id, id]);

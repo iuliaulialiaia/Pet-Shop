@@ -42,10 +42,10 @@ router.post('/',
         {type: 'int+', value: brand_id},
         {type: 'int+', value: category_id}
       ];
-      if (quantity) fields.push({type: 'int+', value: quantity});
-      if (description) fields.push({type: 'ascii', value: description});
-      if (comments) fields.push({type: 'ascii', value: comments});
-      if (rating) fields.push({type: 'rating', value: rating});
+      quantity && fields.push({type: 'int+', value: quantity});
+      description && fields.push({type: 'ascii', value: description});
+      comments && fields.push({type: 'ascii', value: comments});
+      rating && fields.push({type: 'rating', value: rating});
       validateFields(fields);
 
       await ProductRepository.add(name, price, quantity, description, comments, rating, brand_id, category_id);
@@ -68,10 +68,10 @@ router.put('/:id',
         {type: 'int+', value: brand_id},
         {type: 'int+', value: category_id}
       ];
-      if (quantity) fields.push({type: 'int+', value: quantity});
-      if (description) fields.push({type: 'ascii', value: description});
-      if (comments) fields.push({type: 'ascii', value: comments});
-      if (rating) fields.push({type: 'rating', value: rating});
+      quantity && fields.push({type: 'int+', value: quantity});
+      description && fields.push({type: 'ascii', value: description});
+      comments && fields.push({type: 'ascii', value: comments});
+      rating && fields.push({type: 'rating', value: rating});
       validateFields(fields);
 
       await ProductRepository.updateById(id, name, price, quantity, description, comments, rating, brand_id, category_id);
