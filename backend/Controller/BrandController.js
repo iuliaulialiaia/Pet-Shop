@@ -20,7 +20,7 @@ router.get('/:id',
     try {
       const {id} = req.params;
       const fields = [
-        {type: 'int', value: id}
+        {type: 'int+', value: id}
       ];
       validateFields(fields);
 
@@ -37,7 +37,7 @@ router.post('/',
     try {
       const {name} = req.body;
       const fields = [
-        {type: 'alphanumeric', value: name}
+        {type: 'name', value: name}
       ];
       validateFields(fields);
 
@@ -55,8 +55,8 @@ router.put('/:id',
       const {id} = req.params;
       const {name} = req.body;
       const fields = [
-        {type: 'int', value: id},
-        {type: 'alphanumeric', value: name}
+        {type: 'int+', value: id},
+        {type: 'name', value: name}
       ];
       validateFields(fields);
 
@@ -73,7 +73,7 @@ router.delete('/:id',
     try {
       const {id} = req.params;
       const fields = [
-        {type: 'int', value: id}
+        {type: 'int+', value: id}
       ];
       validateFields(fields);
 
