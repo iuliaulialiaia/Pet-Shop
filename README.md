@@ -15,8 +15,8 @@ Sistemul de gestionare al bazelor de date folosit: **PostgreSQL**
 
     CREATE TABLE category (
       id SERIAL PRIMARY KEY,
-      name SMALLINT NOT NULL UNIQUE,
-      target SMALLINT NOT NULL UNIQUE
+      name SMALLINT NOT NULL,
+      target SMALLINT NOT NULL
     );
 
     CREATE TABLE product (

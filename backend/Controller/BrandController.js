@@ -1,5 +1,4 @@
 const express = require('express');
-
 const {Brand} = require('../Entity/Brand');
 const BrandRepository = require('../Repository/BrandRepository');
 

@@ -3,6 +3,9 @@ const {ServerError} = require('./ServerError');
 
 const user_error = parseInt(process.env.USER_ERR);
 
+const categoryNames = ['food', 'toy', 'other'];
+const categoryTargets = ['cat', 'dog'];
+
 /**
  * @param {Object[]} fields
  * @param {int|string} Object[].value - valoarea pe care o verific
@@ -30,6 +33,18 @@ function validateFields(fields) {
           throw new ServerError(`The field ${fieldValue} is not a positive integer.`, user_error);
         }
         break;
+      case 'categoryName':
+        if (!categoryNames.includes(fieldValue.toLowerCase())) {
+          throw new ServerError(`The field ${fieldValue} is not a category name.`, user_error);
+        }
+        break;
+      case 'categoryTarget':
+        if (!categoryTargets.includes(fieldValue.toLowerCase())) {
+          throw new ServerError(`The field ${fieldValue} is not a category target.`, user_error);
+        }
+        break;
+      default:
+        throw new ServerError(`Unknown field type.`, user_error);
     }
   }
 }
