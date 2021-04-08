@@ -3,9 +3,35 @@ Candidata: **Iulia-Maria Tomulescu**
 
 ---
 
+### Arhitectura aplicatiei
+1. HTTP REST API
+   ```
+      GET /brand
+      GET /brand/:id
+      POST /brand
+      PUT /brand/:id
+      DELETE /brand/:id
+   
+      GET /category
+      GET /category/:id
+      POST /category
+      PUT /category/:id
+      DELETE /category/:id
+   
+      GET /product
+      GET /product/:id
+      POST /product
+      PUT /product/:id
+      DELETE /product/:id
+   ```
+2. Monolith
+3. Single Page
+4. Relational  
+Sistemul de gestionare al bazelor de date: **PostgreSQL**
+
+
 ### Baza de date
-Sistemul de gestionare al bazelor de date folosit: **PostgreSQL**
-    
+
     CREATE DATABASE petshop;
 
     CREATE TABLE brand (

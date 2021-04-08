@@ -4,9 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const createError = require('http-errors');
 const {routes} = require('./Controller');
-const {ServerError} = require('./Entity/ServerError');
-
-const {query} = require('./Repository');
+const {ServerError} = require('./utils/ServerError');
 
 const app = express();
 

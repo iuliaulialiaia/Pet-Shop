@@ -1,5 +1,5 @@
 const express = require('express');
-const {validateFields} = require('../Entity/Validator');
+const {validateFields} = require('../utils/validator');
 const CategoryRepository = require('../Repository/CategoryRepository');
 
 const router = express.Router();
