@@ -3,7 +3,7 @@
 
   * {
     margin-left: 30vw;
-    color: #04537e;
+    color: white;
   }
 
   svg {
@@ -19,11 +19,11 @@
     padding-left: 40px;
     margin-top: 30px;
     border: none;
-    background-color: rgba(46, 158, 204, 0.7);
+    background-color: rgba(46, 158, 204, 0.5);
   }
 
   input:focus {
     outline: none;
-    background-color: rgba(46, 158, 204, 0.5);
+    background-color: rgba(46, 158, 204, 0.7);
   }
 }

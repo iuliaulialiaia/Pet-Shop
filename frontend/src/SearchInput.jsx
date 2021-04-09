@@ -7,7 +7,7 @@ function SearchInput(props) {
   return (
     <div className={styles.search}>
       <FontAwesomeIcon icon={faSearch}/>
-      <input type='search' placeholder='Search'/>
+      <input type='search' placeholder='Search' onChange={props.event}/>
     </div>
   );
 }
