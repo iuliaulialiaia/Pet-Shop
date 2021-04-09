@@ -1,0 +1,30 @@
+.footer {
+  height: 200px;
+
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: white;
+  background-color: #147ea7;
+
+  p, a {
+    padding: 10px;
+  }
+
+  p:nth-child(1) {
+    margin-left: 25px;
+  }
+
+  div {
+    margin-left: 100px;
+    padding: 20px;
+  }
+
+  svg {
+    margin-right: 10px;
+  }
+
+  a {
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+}

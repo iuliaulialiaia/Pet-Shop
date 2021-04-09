@@ -64,3 +64,6 @@ Sistemul de gestionare al bazelor de date: **PostgreSQL**
 ### Backend
 Inainte de a introduce campurile in baza de date, le validez folosind pachetul **validator**.  
 Interogarile bazei de date se fac **asincron**.
+
+### Frontend
+Sursa imaginilor: [unsplah](https://unsplash.com)

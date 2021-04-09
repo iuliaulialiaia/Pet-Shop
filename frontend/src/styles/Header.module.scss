@@ -1,0 +1,22 @@
+.header {
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: white;
+
+  div {
+    height: 100vh;
+    background-image: url('../images/dog.jpg');
+    background-size: cover;
+    background-position: center bottom;
+  }
+
+  h1 {
+    padding: 10px;
+  }
+
+  h2 {
+    width: 50px;
+    font-size: 60px;
+    margin-left: 70vw;
+    margin-top: 20vh;
+  }
+}
