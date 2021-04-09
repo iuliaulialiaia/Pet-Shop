@@ -34,6 +34,10 @@ function Content(props) {
     );
   }
 
+  function showProductEvent(syntheticEvent) {
+
+  }
+
   function sortByPriceEvent(syntheticEvent) {
     setFilteredProducts(
       filteredProducts => ([...filteredProducts.sort(
@@ -82,7 +86,10 @@ function Content(props) {
         sortByNameEvent={sortByNameEvent}
         sortByPriceEvent={sortByPriceEvent}
       />
-      <Main products={filteredProducts}/>
+      <Main
+        products={filteredProducts}
+        event={showProductEvent}
+      />
     </div>
   );
 }
