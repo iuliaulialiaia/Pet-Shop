@@ -1,0 +1,29 @@
+.search {
+  position: relative;
+
+  * {
+    margin-left: 30vw;
+    color: #04537e;
+  }
+
+  svg {
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 40px;
+  }
+
+  input {
+    height: 40px;
+    width: 30vw;
+    padding-left: 40px;
+    margin-top: 30px;
+    border: none;
+    background-color: rgba(46, 158, 204, 0.7);
+  }
+
+  input:focus {
+    outline: none;
+    background-color: rgba(46, 158, 204, 0.5);
+  }
+}
