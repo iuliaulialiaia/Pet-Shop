@@ -2,5 +2,23 @@
   width: 20vw;
   float: left;
 
-  background-color: blue;
+  color: #04537e;
+
+  padding-left: 5vw;
+  //background-color: blue;
+
+  h4 {
+    padding: 10px;
+    text-transform: uppercase;
+  }
+
+  p {
+    width: 100px;
+    padding: 5px;
+    margin-left: 10px;
+  }
+
+  p:hover {
+    background-color: rgba(46, 158, 204, 0.5);
+  }
 }
