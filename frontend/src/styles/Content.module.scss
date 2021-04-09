@@ -1,0 +1,10 @@
+.content {
+
+  background-color: azure;
+}
+
+.content::after {
+  display: table;
+  clear: both;
+  content: "";
+}
